@@ -5,48 +5,48 @@ package com.bbt.model;
  */
 public class Music {
     private Integer id;
-    private String title;
-    private String author;
-    private String url;
-    private String pic;
+    private String musicName;
+    private String musicUrl;
+    private String picUrl;
+    private Artist artist;
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setMusicName(String musicName) {
+        this.musicName = musicName;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setMusicUrl(String musicUrl) {
+        this.musicUrl = musicUrl;
     }
 
-    public void setPic(String pic) {
-        this.pic = pic;
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getMusicName() {
+        return musicName;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getMusicUrl() {
+        return musicUrl;
     }
 
-    public String getUrl() {
-        return url;
+    public String getPicUrl() {
+        return picUrl;
     }
 
-    public String getPic() {
-        return pic;
+    public Artist getArtist() {
+        return artist;
     }
 }
