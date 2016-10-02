@@ -18,13 +18,15 @@ public class Validation {
         Field[] fields=c.getDeclaredFields();
         String value=null;
         Matcher matcher=null;
+        String regexp=null;
         for(Field field:fields){
             Pattern pattern=field.getAnnotation(Pattern.class);
             if(pattern==null)
                 continue;
-            String regexp=pattern.regexp();
+            regexp=pattern.regexp();
             boolean notNull=pattern.notNull();
             value=null;
+            field.setAccessible(true);
             try {
                 value= (String) field.get(o);
             } catch (IllegalAccessException e) {
