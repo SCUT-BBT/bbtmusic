@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--code by yuan-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bbt.dao.MusicDao">
+    <resultMap id="music" type="com.bbt.model.Music">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="author" property="author"/>
+        <result column="url" property="url"/>
+        <result column="pic" property="pic"/>
+    </resultMap>
+
+    <select id="getAllMusic" resultMap="music">
+        SELECT * FROM `music`
+    </select>
+
+</mapper>
