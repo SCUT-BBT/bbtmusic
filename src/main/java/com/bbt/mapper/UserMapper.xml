@@ -12,12 +12,16 @@
     </resultMap>
 
 
-    <select id="selectUserCountByPhone">
+    <select id="selectUserCountByPhone" resultType="java.lang.Integer">
         SELECT count(*) FROM `user` WHERE phone=#{phone}
     </select>
 
     <insert id="addUser" parameterType="com.bbt.model.User" useGeneratedKeys="true" keyProperty="id">
         INSERT `user`(phone,password,nick_name) VALUE (#{phone},#{password},#{nickName})
     </insert>
+
+    <select id="selectUser" parameterType="com.bbt.model.User" resultType="java.lang.Integer">
+        SELECT `id` FROM `user` WHERE phone=#{phone} AND password=#{password}
+    </select>
 
 </mapper>

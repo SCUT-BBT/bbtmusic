@@ -14,7 +14,7 @@ public class ValidInfo {
     }
 
     public boolean hasError() {
-        return result;
+        return !result;
     }
 
     public void setErrorFieldNames(List<String> errorFieldNames) {

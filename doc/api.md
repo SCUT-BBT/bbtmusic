@@ -57,6 +57,23 @@ POST /user/login
 | phone         | string    | true | 手机，11位数字 |
 | password      | string    | true |
 
+response:
+```
+//success
+{
+  "code": 0,
+  "data": {
+        "userId":12345  //新用户的用户id
+  }
+}
+```
+```
+//fail-手机号不存在或者密码错误
+{
+  "code": 1, 
+  "data": null,
+}
+```
 
 ### 修改密码
 

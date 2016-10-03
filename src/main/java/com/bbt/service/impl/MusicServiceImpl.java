@@ -22,7 +22,7 @@ public class MusicServiceImpl implements MusicService{
         Result result=new Result();
         List<Music> musics=musicDao.getAllMusic();
         result.setData(musics);
-        result.setStatusOk();
+        result.setCode(0);
         return result;
     }
 }

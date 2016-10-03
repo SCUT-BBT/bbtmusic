@@ -31,4 +31,15 @@ public class UserController {
     public Result register(@RequestBody User user){
         return userService.register(user);
     }
+
+    /**
+     * 用户登陆
+     * @param user
+     * @return
+     */
+    @RequestMapping(value="/login",method = RequestMethod.POST)
+    @ResponseBody
+    public Result login(@RequestBody User user){
+        return userService.login(user);
+    }
 }

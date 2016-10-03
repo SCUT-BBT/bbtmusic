@@ -18,11 +18,6 @@ public class UserServiceImpl implements UserService{
     @Resource
     UserDao userDao;
 
-    /**
-     * 注册新用户
-     * @param user
-     * @return
-     */
     public Result register(User user) {
         Result result=new Result();
         int code=checkUser(user);
@@ -31,6 +26,24 @@ public class UserServiceImpl implements UserService{
             return result;
         }
         userDao.addUser(user);
+        result.addData("userId",user.getId());
+        result.setCode(0);
+        return result;
+    }
+
+    public Result login(User user) {
+        Result result=new Result();
+        ValidInfo validInfo=Validation.validatePattern(user);
+        if(validInfo.hasError()){
+            result.setCode(1);
+            return result;
+        }
+        Integer userId=userDao.selectUser(user);
+        if(userId==null){
+            result.setCode(1);
+            return result;
+        }
+        result.addData("userId",userId);
         result.setCode(0);
         return result;
     }
@@ -51,4 +64,6 @@ public class UserServiceImpl implements UserService{
             return 1;
         return 0;
     }
+
+
 }

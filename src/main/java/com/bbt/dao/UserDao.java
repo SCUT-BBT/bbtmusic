@@ -3,10 +3,12 @@ package com.bbt.dao;
 import com.bbt.model.User;
 import org.apache.ibatis.annotations.Param;
 
+
 /**
  * Created by yuan on 10/2/16.
  */
 public interface UserDao {
+
 
     /**
      * 插入新的用户
@@ -20,4 +22,11 @@ public interface UserDao {
      * @return
      */
     int selectUserCountByPhone(@Param("phone") String phone);
+
+    /**
+     * 获取用户id
+     * @param user user必须包含phone和password信息
+     * @return 用户id
+     */
+    Integer selectUser(User user);
 }
