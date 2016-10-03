@@ -34,50 +34,50 @@ data 返回的数据，请求单个对象接口返回是一个 json 键值对，
 
 ### 普通用户注册
 
-POST /user/pers_register
+POST /user/register
 
 请求参数：
 
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:| ----:|
 | password      | string    | true |      |
-| nick_name         | string    | true |  昵称    |
-| Phone_no    | string    | true | 手机，11位数字 |
+| nickName         | string    | true |  昵称    |
+| phone    | string    | true | 手机，11位数字 |
 | sex    | string    | true | 可选值: "男"/"女" |
 
 ### 普通用户登录
 
-POST /user/pers_login
+POST /user/login
 
 请求参数：
 
 | 参数 | 类型 | 必填 |备注 |
 | ------------- |:---------:| ----:|----:|
-| Phone_no         | string    | true | 手机，11位数字 |
+| phone         | string    | true | 手机，11位数字 |
 | password      | string    | true |
 
 ###登录后可或者用户ID，一下操作均在ID已知的前提下
 ### 修改密码
 
-POST /user/change_password
+POST /user/pwd/change
 
 请求参数：
 
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:|----:|
-| auth_token    | string    | true |  |
-| old_password | string  | true |   |
-| new_password      | string    | true |     |
+| userId | int  | true |   |
+| oldPassword | string  | true |   |
+| newPassword      | string    | true |     |
 
 ### 用户信息
 
-GET /user/profile
+GET /user/info
 
 请求参数：
 
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:| ----:|
-| auth_token    | string    | true |  |
+| userId    | int    | true |  |
 
 ### 更新用户头像
 
@@ -87,19 +87,19 @@ POST /user/avatar
 
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:| ----:|
-| auth_token    | string    | true |  |
+| userId    | int    | true |  |
 | avatar    | integer    | true | 上传图片后返回的 id |
 
 ##首页 api
 
 ### 歌曲推荐列表
 
-GET /Recommendation_Music
+GET /music/recommendation
 
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:| ----:|
-| page_index      | integer | false |大于等于1, 不填默认1|
-| page_size      | integer | false |大于等于1, 不填默认是10|
+| page      | integer | false |大于等于1|
+| size      | integer | false |大于等于1|
 
 
 ##获取热门动态
@@ -154,7 +154,7 @@ comment_count | int | 评论数
 }`
 
 ###获取评论
-GET comment/show
+GET comment/all
 
 **请求参数**
 
@@ -207,9 +207,9 @@ POST comment/add
 
 | ID | int64 | true | 动态的ID |
 
-| user_ID | int64 | true | 用户的ID |
+| userId | int64 | true | 用户的ID |
 
-| text | string | true | 评论内容 |
+| comment | string | true | 评论内容 |
 
 
 ###用户信息查看
