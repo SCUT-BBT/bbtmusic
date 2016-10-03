@@ -25,12 +25,13 @@ public class UserServiceImpl implements UserService{
      */
     public Result register(User user) {
         Result result=new Result();
-        if(!checkUser(user)){
-            result.setStatusFail();
-        }else{
-            userDao.addUser(user);
-            result.setStatusOk();
+        int code=checkUser(user);
+        if(code>0){
+            result.setCode(code);
+            return result;
         }
+        userDao.addUser(user);
+        result.setCode(0);
         return result;
     }
 
@@ -40,14 +41,14 @@ public class UserServiceImpl implements UserService{
      * @param user
      * @return
      */
-    private boolean checkUser(User user) {
+    private int checkUser(User user) {
         ValidInfo validInfo= Validation.validatePattern(user);
         if(validInfo.hasError())
-            return false;
-        String userName=user.getUserName();
-        int count=userDao.selectUserCountByUserName(userName);
+            return 2;
+        String phone=user.getPhone();
+        int count=userDao.selectUserCountByPhone(phone);
         if(count>0)
-            return false;
-        return true;
+            return 1;
+        return 0;
     }
 }

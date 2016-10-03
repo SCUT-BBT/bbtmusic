@@ -16,16 +16,12 @@ demo 后台入口
 
 ```
 {
-  "result_code": 0,
-  "result_msg": "success",
-  "data": ..
+  "code": 0, //0-成功,1-失败
+  "data": {...}
 }
 ```
 
-result_code 为 0 代表请求成功，其他代表请求失败
-
-result_msg 为返回说明
-
+code 为 0 代表请求成功，其他代表请求失败
 data 返回的数据，请求单个对象接口返回是一个 json 键值对，请求列表接口是一个数组
 
 

@@ -5,17 +5,19 @@
 
     <resultMap id="user" type="com.bbt.model.User">
         <id property="id" column="id"/>
-        <result property="userName" column="user_name"/>
+        <result property="phone" column="phone"/>
         <result property="password" column="password"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="sex" column="sex"/>
     </resultMap>
 
 
-    <select id="selectUserCountByUserName">
-        SELECT count(*) FROM `user` WHERE user_name=#{userName}
+    <select id="selectUserCountByPhone">
+        SELECT count(*) FROM `user` WHERE phone=#{phone}
     </select>
 
-    <insert id="addUser" parameterType="com.bbt.model.User">
-        INSERT `user`(user_name,password) VALUE (#{userName},#{password})
+    <insert id="addUser" parameterType="com.bbt.model.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT `user`(phone,password,nick_name) VALUE (#{phone},#{password},#{nickName})
     </insert>
 
 </mapper>

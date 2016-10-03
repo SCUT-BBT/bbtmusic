@@ -1,3 +1,11 @@
+返回参数格式 :
+
+```
+{
+  "code": 0, //0-成功,1-失败
+  "data": {...}
+}
+```
 ## 用户 api
 
 ### 普通用户注册
@@ -12,6 +20,31 @@ POST /user/register
 | nickName         | string    | true |  昵称    |
 | phone    | string    | true | 手机，11位数字 |
 | sex    | string    | true | 可选值: "男"/"女" |
+
+response:
+```
+//success
+{
+  "code": 0,
+  "data": {
+        "userId":12345  //新用户的用户id
+  }
+}
+```
+```
+//fail-手机号重复
+{
+  "code": 1, 
+  "data": null,
+}
+```
+```
+//fail-手机号格式错误
+{
+  "code": 2,  
+  "data": null,
+}
+```
 
 ### 普通用户登录
 

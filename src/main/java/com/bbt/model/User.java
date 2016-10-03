@@ -7,29 +7,59 @@ import com.yuan.validation.constraints.Pattern;
  */
 public class User {
 
-    @Pattern(regexp = ".*")
-    private String userName;
+    //用户id
+    private int id;
+
+    //用户手机号码(也是登陆账号)
+    @Pattern(regexp = "\\d+",notNull = true)
+    private String phone;
 
     @Pattern(regexp = ".*")
     private String password;
 
+    //昵称
+    private String nickName;
+
+    private String sex;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getId() {
+
+        return id;
+    }
+
+    public String getNickName() {
+        return nickName;
     }
 
     public String getPassword() {
-
         return password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getPhone() {
+        return phone;
     }
 
+    public String getSex() {
+        return sex;
+    }
 
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 }
