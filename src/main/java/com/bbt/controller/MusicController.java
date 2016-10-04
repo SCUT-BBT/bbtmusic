@@ -19,8 +19,8 @@ public class MusicController {
     MusicService musicService;
 
     @RequestMapping("/all")
-    public @ResponseBody Result getAllMusic(){
-        Result result=musicService.getAllMusic();
+    public @ResponseBody Result getAllMusic(int page,int size){
+        Result result=musicService.getAllMusic(page,size);
         return result;
     }
 

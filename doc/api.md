@@ -91,20 +91,68 @@ POST /user/pwd/change
 
 GET /user/info
 
-请求参数：
+头部信息:
 
-| 参数 | 类型 | 必填 | 备注 |
-| ------------- |:---------:| ----:| ----:|
-| userId    | int    | true |  |
+| 参数 | 类型 | 必选 | 备注|
+|:---------:|:---------:|:--------:|:--------:|
+|token|int|yes|用户id|
+
+请求参数：
+response:
+```
+//success
+{
+  "code": 200,
+  "data": {
+    "id": 0,
+    "phone": "yuan",
+    "password": null,
+    "nickName": null,
+    "sex": "男"
+  }
+}
+```
 
 
 ##首页 api
 
 ### 歌曲推荐列表
 
-GET /music/recommendation
+GET /music/all
 
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:| ----:|
 | page      | integer | false |大于等于1|
 | size      | integer | false |大于等于1|
+
+response:
+```
+{
+  "code": 200,
+  "data": [
+    {
+      "id": 1,
+      "musicName": "one",
+      "musicUrl": "http://....",
+      "picUrl": "",
+      "artist": {
+        "id": 1,
+        "name": "ya",
+        "sex": null
+      }
+    },
+    {
+      "id": 2,
+      "musicName": "two",
+      "musicUrl": "http://asdfnklsdf",
+      "picUrl": "....",
+      "artist": {
+        "id": 1,
+        "name": "ya",
+        "sex": null
+      }
+    }   
+    
+  ]
+}
+```

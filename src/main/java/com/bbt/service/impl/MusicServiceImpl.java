@@ -18,11 +18,12 @@ public class MusicServiceImpl implements MusicService{
     @Resource
     MusicDao musicDao;
 
-    public Result getAllMusic() {
+    public Result getAllMusic(int page,int size) {
         Result result=new Result();
-        List<Music> musics=musicDao.getAllMusic();
+        int offset=(page-1)*size;
+        List<Music> musics=musicDao.getAllMusic(offset,size);
         result.setData(musics);
-        result.setCode(0);
+        result.setCode(200);
         return result;
     }
 }

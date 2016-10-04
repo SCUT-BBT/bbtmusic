@@ -29,7 +29,8 @@
 
     <select id="getAllMusic" resultMap="music">
         SELECT music_id,music_name,music_url,pic_url,music.artists_id,artists_name
-        FROM music LEFT JOIN artists ON music.artists_id=artists.artists_id;
+        FROM music LEFT JOIN artists ON music.artists_id=artists.artists_id
+        limit #{offset},#{size}
     </select>
 
 </mapper>
