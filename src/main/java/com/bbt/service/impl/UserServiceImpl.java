@@ -1,5 +1,6 @@
 package com.bbt.service.impl;
 
+import com.bbt.authorization.model.UserInfo;
 import com.bbt.dao.UserDao;
 import com.bbt.model.Result;
 import com.bbt.model.User;
@@ -45,6 +46,15 @@ public class UserServiceImpl implements UserService{
         }
         result.addData("userId",userId);
         result.setCode(0);
+        return result;
+    }
+
+    public Result getUserInfo(UserInfo userInfo) {
+        Result result=new Result();
+        int userId=userInfo.getUserId();
+        User user=userDao.selectUserByUserId(userId);
+        result.setCode(200);
+        result.setData(user);
         return result;
     }
 

@@ -29,4 +29,11 @@ public interface UserDao {
      * @return 用户id
      */
     Integer selectUser(User user);
+
+    /**
+     * 通过用户id获取用户信息,但是用户信息不会包含密码信息
+     * @param userId
+     * @return
+     */
+    User selectUserByUserId(@Param("userId") int userId);
 }

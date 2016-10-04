@@ -47,11 +47,12 @@ public class UserController {
         return userService.login(user);
     }
 
+
+
     @RequestMapping(value="/info",method = RequestMethod.GET)
     @ResponseBody
     @Authorization
     public Result info(HttpServletRequest request, @CurrentUser UserInfo userInfo){
-//        UserInfo userInfo= (UserInfo) request.getAttribute(AuthorizationConstant.USERINFO);
-        return new Result();
+        return userService.getUserInfo(userInfo);
     }
 }

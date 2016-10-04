@@ -1,5 +1,6 @@
 package com.bbt.service;
 
+import com.bbt.authorization.model.UserInfo;
 import com.bbt.model.Result;
 import com.bbt.model.User;
 
@@ -20,4 +21,11 @@ public interface UserService {
      * @return
      */
     Result login(User user);
+
+    /**
+     * 获取用户信息
+     * @param userInfo
+     * @return
+     */
+    Result getUserInfo(UserInfo userInfo);
 }

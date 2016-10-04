@@ -37,6 +37,9 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter{
     }
 
     private boolean checkToken(Token token) {
+        UserInfo userInfo=token.getUserInfo();
+        if(userInfo==null)
+            return false;
         return true;
     }
 
