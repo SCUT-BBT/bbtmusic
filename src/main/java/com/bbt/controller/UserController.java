@@ -1,5 +1,8 @@
 package com.bbt.controller;
 
+import com.bbt.authorization.model.UserInfo;
+import com.bbt.authorization.annnotation.Authorization;
+import com.bbt.authorization.annnotation.CurrentUser;
 import com.bbt.model.Result;
 import com.bbt.model.User;
 import com.bbt.service.UserService;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by yuan on 10/2/16.
@@ -41,5 +45,13 @@ public class UserController {
     @ResponseBody
     public Result login(@RequestBody User user){
         return userService.login(user);
+    }
+
+    @RequestMapping(value="/info",method = RequestMethod.GET)
+    @ResponseBody
+    @Authorization
+    public Result info(HttpServletRequest request, @CurrentUser UserInfo userInfo){
+//        UserInfo userInfo= (UserInfo) request.getAttribute(AuthorizationConstant.USERINFO);
+        return new Result();
     }
 }

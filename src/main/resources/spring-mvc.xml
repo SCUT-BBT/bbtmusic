@@ -20,6 +20,9 @@
             <ref bean="jsonConverter"/>
             <ref bean="stringConverter"/>
         </mvc:message-converters>
+        <mvc:argument-resolvers>
+            <bean class="com.bbt.authorization.resolver.UserInfoMethodArgumentResolver"></bean>
+        </mvc:argument-resolvers>
     </mvc:annotation-driven>
 
     <!--避免IE执行Ajax时，返回json出现下载文件-->
@@ -45,10 +48,12 @@
         <property name="uploadTempDir" value="fileUpload/temp"/>
     </bean>
 
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/admin/**"/>-->
-            <!--<bean class="com.system.interceptor.UserAuthorityInterceptor"/>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.bbt.authorization.interceptor.AuthorizationInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
 </beans>
