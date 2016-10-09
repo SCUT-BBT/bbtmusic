@@ -13,4 +13,13 @@ public interface MusicService {
      * @return
      */
     Result getAllMusic(int page,int size);
+
+    /**
+     * 根据音乐名字来搜索音乐
+     * @param musicName
+     * @param page
+     * @param size
+     * @return
+     */
+    Result searchMusic(String musicName, int page, int size);
 }

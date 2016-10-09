@@ -26,4 +26,15 @@ public class MusicServiceImpl implements MusicService{
         result.setCode(200);
         return result;
     }
+
+
+    public Result searchMusic(String musicName, int page, int size) {
+        Result result=new Result();
+        musicName="%"+musicName+"%";
+        int offset=(page-1)*size;
+        List<Music> musics=musicDao.selectMusicByName(musicName,offset,size);
+        result.setData(musics);
+        result.setCode(200);
+        return result;
+    }
 }

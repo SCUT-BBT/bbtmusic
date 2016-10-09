@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface MusicDao {
     List<Music> getAllMusic(@Param("offset")int offset,@Param("size")int size);
+
+    List<Music> selectMusicByName(@Param("musicName") String musicName, @Param("offset") int offset, @Param("size") int size);
 }

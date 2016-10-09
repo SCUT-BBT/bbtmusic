@@ -33,4 +33,10 @@
         limit #{offset},#{size}
     </select>
 
+    <select id="selectMusicByName" resultMap="music">
+        SELECT music_id,music_name,music_url,pic_url,music.artists_id,artists_name
+        FROM music LEFT JOIN artists ON music.artists_id=artists.artists_id WHERE music_name LIKE #{musicName}
+        limit #{offset},#{size}
+    </select>
+
 </mapper>
