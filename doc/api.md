@@ -106,9 +106,12 @@ response:
   "data": {
     "id": 0,
     "phone": "yuan",
-    "password": null,
-    "nickName": null,
-    "sex": "男"
+    "nickName": "yuan",
+    "sex": "男",
+    "picUrl": "www.baidu.com",
+    "province": "广东",
+    "city": "广州",
+    "birthday": "2016-10-11"
   }
 }
 ```
@@ -209,15 +212,13 @@ response:
   "code": 200,
   "data": [
   
-	//第一条comment
-    {   
+    //第一条评论
+    {
       "user": {
         "id": 1,
         "phone": "yuan",
-        "password": null,
         "nickName": "yuan",
-        "sex": null,
-        "picUrl": null
+        "picUrl": "www.baidu.com",
       },
       "music": {
         "id": 1,
@@ -227,23 +228,20 @@ response:
         "artist": {
           "id": 1,
           "name": "ya",
-          "sex": null
+          "sex": "男"
         }
       },
       "id": 1,
       "content": "好听",
       "date": "2016-10-10"
     },
-
-	//第2条comment
+    
+    //第二条评论
     {
       "user": {
         "id": 2,
         "phone": "18826077178",
-        "password": null,
         "nickName": "小米",
-        "sex": null,
-        "picUrl": null
       },
       "music": {
         "id": 2,
@@ -253,7 +251,7 @@ response:
         "artist": {
           "id": 1,
           "name": "ya",
-          "sex": null
+          "sex": "男"
         }
       },
       "id": 2,
@@ -281,18 +279,24 @@ response:
     {
       "id": 1,
       "content": "确实很好听啊",
-      "userId": 3,
+      "user": {
+        "id": 3,
+        "nickName": "阿西",
+        "picUrl": "www.baidu.com",
+      },
       "commentId": 1,
-      "date": "2016-10-20",
-      "nickName": "阿西"
+      "date": "2016-10-20"
     },
     {
       "id": 2,
       "content": "interesting!",
-      "userId": 2,
+      "user": {
+        "id": 2,
+        "nickName": "小米",
+        "picUrl": "www.baidu.com",
+      },
       "commentId": 1,
-      "date": "2016-10-11",
-      "nickName": "小米"
+      "date": "2016-10-11"
     }
   ]
 }

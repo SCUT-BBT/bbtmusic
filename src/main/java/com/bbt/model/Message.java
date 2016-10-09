@@ -6,10 +6,9 @@ package com.bbt.model;
 public class Message {
     private int id;
     private String content;
-    private int userId;
+    private User user;
     private int commentId;
     private String date;
-    private String nickName;
 
     public void setCommentId(int commentId) {
         this.commentId = commentId;
@@ -27,9 +26,6 @@ public class Message {
         this.id = id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public int getCommentId() {
 
@@ -48,15 +44,14 @@ public class Message {
         return id;
     }
 
-    public int getUserId() {
-        return userId;
+
+
+
+    public User getUser() {
+        return user;
     }
 
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

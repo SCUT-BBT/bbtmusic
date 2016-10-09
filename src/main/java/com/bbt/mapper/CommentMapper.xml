@@ -49,8 +49,7 @@
         <result property="commentId" column="comment_id"/>
         <result property="content" column="content"/>
         <result property="date" column="date"/>
-        <result property="userId" column="user_id"/>
-        <result property="nickName" column="nick_name"/>
+        <association property="user" resultMap="user"/>
     </resultMap>
 
 
@@ -68,7 +67,7 @@
 
 
     <select id="selectMessagesByCommentId" resultMap="message">
-        SELECT message_id,comment_id,message.content,message.date,message.user_id,nick_name FROM
+        SELECT message_id,comment_id,message.content,message.date,message.user_id,nick_name,`user`.pic_url as user_pic_url FROM
         message
         LEFT JOIN music_comment ON message.comment_id=music_comment.id
         LEFT JOIN `user` ON `user`.id=message.user_id

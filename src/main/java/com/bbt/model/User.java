@@ -24,6 +24,12 @@ public class User {
 
     private String picUrl;
 
+    private String province;
+
+    private String city;
+
+    private String birthday;
+
     public void setId(int id) {
         this.id = id;
     }
@@ -71,5 +77,29 @@ public class User {
 
     public void setPicUrl(String picUrl) {
         this.picUrl = picUrl;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 }
