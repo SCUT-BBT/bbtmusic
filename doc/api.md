@@ -122,8 +122,8 @@ GET /music/all
 
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:| ----:|
-| page      | integer | false |大于等于1|
-| size      | integer | false |大于等于1|
+| page      | integer | true |大于等于1|
+| size      | integer | true |大于等于1|
 
 response:
 ```
@@ -156,3 +156,145 @@ response:
   ]
 }
 ```
+
+###搜索音乐
+GET /music/queries
+| 参数 | 类型 | 必填 | 备注 |
+| ------------- |:---------:| ----:| ----:|
+|musicName|String|true|音乐名字的关键字
+| page      | integer | true |大于等于1|
+| size      | integer | true |大于等于1|
+
+response:
+```
+{
+  "code": 200,
+  "data": [
+    {
+      "id": 1,
+      "musicName": "one",
+      "musicUrl": "www.baidu.com",
+      "picUrl": "www.1.com",
+      "artist": {
+        "id": 1,
+        "name": "ya",
+        "sex": "男"
+      }
+    },
+    {
+      "id": 2,
+      "musicName": "two",
+      "musicUrl": "www.baidu.com",
+      "picUrl": "www.baidu.com",
+      "artist": {
+        "id": 1,
+        "name": "ya",
+        "sex": "男"
+      }
+    }
+  ]
+}
+```
+
+
+
+
+## 评论
+###获取当前所有评论
+GET /comment/all
+
+response:
+```
+{
+  "code": 200,
+  "data": [
+  
+	//第一条comment
+    {   
+      "user": {
+        "id": 1,
+        "phone": "yuan",
+        "password": null,
+        "nickName": "yuan",
+        "sex": null,
+        "picUrl": null
+      },
+      "music": {
+        "id": 1,
+        "musicName": "one",
+        "musicUrl": "www.baidu.com",
+        "picUrl": "www.1.com",
+        "artist": {
+          "id": 1,
+          "name": "ya",
+          "sex": null
+        }
+      },
+      "id": 1,
+      "content": "好听",
+      "date": "2016-10-10"
+    },
+
+	//第2条comment
+    {
+      "user": {
+        "id": 2,
+        "phone": "18826077178",
+        "password": null,
+        "nickName": "小米",
+        "sex": null,
+        "picUrl": null
+      },
+      "music": {
+        "id": 2,
+        "musicName": "two",
+        "musicUrl": "www.baidu.com",
+        "picUrl": "www.baidu.com",
+        "artist": {
+          "id": 1,
+          "name": "ya",
+          "sex": null
+        }
+      },
+      "id": 2,
+      "content": "美妙",
+      "date": "2016-10-19"
+    }
+  ]
+}
+```
+
+
+
+###获取某一个评论下的所有跟帖信息
+GET /comment/{id}/message
+**其中id为comment的id,实际发送请求的时候把{id}替换成实际的comment的id**
+```
+//请求id为1的comment的所有跟帖信息
+ /comment/1/message
+```
+response:
+```
+{
+  "code": 200,
+  "data": [
+    {
+      "id": 1,
+      "content": "确实很好听啊",
+      "userId": 3,
+      "commentId": 1,
+      "date": "2016-10-20",
+      "nickName": "阿西"
+    },
+    {
+      "id": 2,
+      "content": "interesting!",
+      "userId": 2,
+      "commentId": 1,
+      "date": "2016-10-11",
+      "nickName": "小米"
+    }
+  ]
+}
+```
+

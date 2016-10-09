@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--code by yuan-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bbt.dao.CommentDao">
+    <!--<resultMap id="music" type="com.bbt.model.Music">-->
+    <!--<id column="id" property="id"/>-->
+    <!--<result column="title" property="title"/>-->
+    <!--<result column="author" property="author"/>-->
+    <!--<result column="url" property="url"/>-->
+    <!--<result column="pic" property="pic"/>-->
+    <!--</resultMap>-->
+
+    <!--<select id="getAllMusic" resultMap="music">-->
+    <!--SELECT * FROM `music`-->
+    <!--</select>-->
+
+    <resultMap id="artist" type="com.bbt.model.Artist">
+        <id property="id" column="artists_id"/>
+        <result property="name" column="artists_name"/>
+        <result property="sex" column="artists_sex"/>
+    </resultMap>
+
+    <resultMap id="music" type="com.bbt.model.Music">
+        <id property="id" column="music_id"/>
+        <result property="musicName" column="music_name"/>
+        <result property="musicUrl" column="music_url"/>
+        <result property="picUrl" column="music_pic_url"/>
+        <association property="artist" javaType="com.bbt.model.Artist" resultMap="artist"/>
+    </resultMap>
+
+    <resultMap id="user" type="com.bbt.model.User">
+        <id property="id" column="user_id"/>
+        <result property="phone" column="phone"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="picUrl" column="user_pic_url"/>
+        <result property="sex" column="sex"/>
+    </resultMap>
+
+    <resultMap id="comment" type="com.bbt.model.Comment">
+        <id property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="date" column="date"/>
+        <association property="music" resultMap="music"/>
+        <association property="user" resultMap="user"/>
+    </resultMap>
+
+    <resultMap id="message" type="com.bbt.model.Message">
+        <id property="id" column="message_id"/>
+        <result property="commentId" column="comment_id"/>
+        <result property="content" column="content"/>
+        <result property="date" column="date"/>
+        <result property="userId" column="user_id"/>
+        <result property="nickName" column="nick_name"/>
+    </resultMap>
+
+
+
+    <select id="selectComment" resultMap="comment">
+        SELECT `music_comment`.`id` as `id`,music_comment.content AS content,`music_comment`.`date` as `date`,
+               music.music_id as music_id,music.music_name,music.music_url,music.pic_url as music_pic_url,
+               artists.artists_id,artists.artists_name,artists_sex,
+               `user`.id as user_id,`user`.phone,`user`.nick_name,`user`.pic_url as user_pic_url
+        FROM `music_comment`
+              LEFT JOIN `user` ON `music_comment`.`user_id`=`user`.`id`
+              LEFT JOIN `music` ON `music_comment`.`music_id`=`music`.`music_id`
+              LEFT JOIN `artists` ON `music`.`artists_id`=`artists`.`artists_id`
+    </select>
+
+
+    <select id="selectMessagesByCommentId" resultMap="message">
+        SELECT message_id,comment_id,message.content,message.date,message.user_id,nick_name FROM
+        message
+        LEFT JOIN music_comment ON message.comment_id=music_comment.id
+        LEFT JOIN `user` ON `user`.id=message.user_id
+        WHERE comment_id=#{commentId}
+    </select>
+
+</mapper>

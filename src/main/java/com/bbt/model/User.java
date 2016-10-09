@@ -22,6 +22,8 @@ public class User {
 
     private String sex;
 
+    private String picUrl;
+
     public void setId(int id) {
         this.id = id;
     }
@@ -61,5 +63,13 @@ public class User {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 }

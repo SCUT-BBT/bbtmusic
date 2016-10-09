@@ -25,16 +25,17 @@
     <resultMap id="artist" type="com.bbt.model.Artist">
         <id property="id" column="artists_id"/>
         <result property="name" column="artists_name"/>
+        <result property="sex" column="artists_sex"/>
     </resultMap>
 
     <select id="getAllMusic" resultMap="music">
-        SELECT music_id,music_name,music_url,pic_url,music.artists_id,artists_name
+        SELECT music_id,music_name,music_url,pic_url,music.artists_id,artists_name,artists_sex
         FROM music LEFT JOIN artists ON music.artists_id=artists.artists_id
         limit #{offset},#{size}
     </select>
 
     <select id="selectMusicByName" resultMap="music">
-        SELECT music_id,music_name,music_url,pic_url,music.artists_id,artists_name
+        SELECT music_id,music_name,music_url,pic_url,music.artists_id,artists_name,artists_sex
         FROM music LEFT JOIN artists ON music.artists_id=artists.artists_id WHERE music_name LIKE #{musicName}
         limit #{offset},#{size}
     </select>
