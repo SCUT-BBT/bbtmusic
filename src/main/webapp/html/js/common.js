@@ -22,11 +22,14 @@ function gotoUrl(url, params) {
 function sendAjaxRequest(url, params, callBack) {
     $.ajax({
         type: 'POST',
+        // type: 'GET',
         dataType: 'json',
         url: url,
-        contentType: "application/json; charset=utf-8",
+        contentType: "application/json; charset=utf-8",     //参数为json
+        // contentType:"application/x-www-form-urlencoded", //参数为 key/value 格式
         data: JSON.stringify(params),
         // data:params,
+
         xhrFields: {
             withCredentials: true
         },
