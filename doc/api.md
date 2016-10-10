@@ -13,6 +13,7 @@
 POST /user/register
 
 请求参数：
+**contentType: "application/json; charset=utf-8"**
 
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:| ----:|
@@ -51,6 +52,7 @@ response:
 POST /user/login
 
 请求参数：
+**contentType: "application/json; charset=utf-8"**
 
 | 参数 | 类型 | 必填 |备注 |
 | ------------- |:---------:| ----:|----:|
@@ -80,6 +82,7 @@ response:
 POST /user/pwd/change
 
 请求参数：
+**contentType: "application/json; charset=utf-8"**
 
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:|----:|
@@ -122,6 +125,7 @@ response:
 ### 歌曲推荐列表
 
 GET /music/all
+**contentType: "application/x-www-form-urlencoded"**
 
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:| ----:|
@@ -162,6 +166,8 @@ response:
 
 ###搜索音乐
 GET /music/queries
+**contentType: "application/x-www-form-urlencoded"**
+
 | 参数 | 类型 | 必填 | 备注 |
 | ------------- |:---------:| ----:| ----:|
 |musicName|String|true|音乐名字的关键字
@@ -302,3 +308,99 @@ response:
 }
 ```
 
+
+## 收藏
+### 获取特定用户所收藏的歌曲
+GET /music/favorites/all
+
+头部信息:
+
+| 参数 | 类型 | 必选 | 备注|
+|:---------:|:---------:|:--------:|:--------:|
+|token|int|yes|用户id|
+
+请求参数：
+**contentType: "application/x-www-form-urlencoded"**
+
+| 参数 | 类型 | 必选 | 备注|
+|:---------:|:---------:|:--------:|:--------:|
+|page|int|yes|page>=1,从第几页开始|
+|size|int|yes|size>=1,每一页所包含的最大数量|
+
+response:
+```
+{
+  "code": 200,
+  "data": [
+    {
+      "id": 1,
+      "musicName": "one",
+      "musicUrl": "www.baidu.com",
+      "picUrl": "www.1.com",
+      "artist": {
+        "id": 1,
+        "name": "ya",
+        "sex": "男"
+      }
+    },
+    {
+      "id": 2,
+      "musicName": "two",
+      "musicUrl": "www.baidu.com",
+      "picUrl": "www.baidu.com",
+      "artist": {
+        "id": 1,
+        "name": "ya",
+        "sex": "男"
+      }
+    }
+  ]
+}
+```
+
+### 收藏歌曲
+POST /music/favorites/add
+
+头部信息:
+
+| 参数 | 类型 | 必选 | 备注|
+|:---------:|:---------:|:--------:|:--------:|
+|token|int|yes|用户id|
+
+请求参数：
+**contentType: "application/x-www-form-urlencoded"**
+
+| 参数 | 类型 | 必选 | 备注|
+|:---------:|:---------:|:--------:|:--------:|
+| musicId |int|yes|要收藏的音乐的id|
+
+response:
+```
+{
+  "code": 200,
+  "data": [
+    {
+      "id": 1,
+      "musicName": "one",
+      "musicUrl": "www.baidu.com",
+      "picUrl": "www.1.com",
+      "artist": {
+        "id": 1,
+        "name": "ya",
+        "sex": "男"
+      }
+    },
+    {
+      "id": 2,
+      "musicName": "two",
+      "musicUrl": "www.baidu.com",
+      "picUrl": "www.baidu.com",
+      "artist": {
+        "id": 1,
+        "name": "ya",
+        "sex": "男"
+      }
+    }
+  ]
+}
+```

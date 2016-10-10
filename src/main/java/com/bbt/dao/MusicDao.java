@@ -12,4 +12,8 @@ public interface MusicDao {
     List<Music> getAllMusic(@Param("offset")int offset,@Param("size")int size);
 
     List<Music> selectMusicByName(@Param("musicName") String musicName, @Param("offset") int offset, @Param("size") int size);
+
+    void addFavoriteMusic(@Param("userId") int userId, @Param("musicId") int musicId);
+
+    List<Music> selectFavoriteMusicByUserId(@Param("userId") int userId, @Param("offset") int offset, @Param("size") int size);
 }

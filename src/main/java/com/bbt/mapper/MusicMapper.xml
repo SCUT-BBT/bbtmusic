@@ -28,6 +28,7 @@
         <result property="sex" column="artists_sex"/>
     </resultMap>
 
+
     <select id="getAllMusic" resultMap="music">
         SELECT music_id,music_name,music_url,pic_url,music.artists_id,artists_name,artists_sex
         FROM music LEFT JOIN artists ON music.artists_id=artists.artists_id
@@ -40,4 +41,15 @@
         limit #{offset},#{size}
     </select>
 
+    <insert id="addFavoriteMusic">
+        INSERT INTO favorite(music_id,user_id) VALUE (#{musicId},#{userId})
+    </insert>
+
+    <select id="selectFavoriteMusicByUserId" resultMap="music">
+        SELECT music_id,music_name,music_url,pic_url,music.artists_id,artists_name,artists_sex
+        FROM music
+        LEFT JOIN artists ON music.artists_id=artists.artists_id
+        WHERE music_id IN (SELECT music_id FROM favorite WHERE user_id=#{userId})
+        limit #{offset},#{size}
+    </select>
 </mapper>
