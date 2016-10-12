@@ -14,7 +14,7 @@
 
 ### 普通用户注册
 
-POST /user/register
+POST /user/add
 
 请求参数：
 **contentType: "application/json; charset=utf-8"**
